@@ -6,7 +6,7 @@
 /*   By: aroi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 21:30:43 by aroi              #+#    #+#             */
-/*   Updated: 2018/03/25 17:42:04 by aroi             ###   ########.fr       */
+/*   Updated: 2018/03/29 17:10:43 by aroi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ static char		*str_maker(char const *s, char c, size_t *i, char *str)
 	size_t j;
 
 	j = 0;
-	if (str)
-		while (s[*i] != c && s[*i] != '\0')
-			str[j++] = s[(*i)++];
+	if (!str)
+		return (0);
+	while (s[*i] != c && s[*i] != '\0')
+		str[j++] = s[(*i)++];
 	str[j] = '\0';
 	return (str);
 }
@@ -79,22 +80,22 @@ char			**ft_strsplit(char const *s, char c)
 
 	i = 0;
 	n = -1;
-	if (s)
+	if (!s)
+		return (0);
+	qnt = qnt_words(s, c);
+	str = (char **)malloc(sizeof(char *) * (qnt + 1));
+	if (!str)
+		return (0);
+	while (++n < qnt)
 	{
-		qnt = qnt_words(s, c);
-		str = (char **)malloc(sizeof(char *) * (qnt + 1));
-		if (str)
+		str[n] = str_alloc(s, c, &i);
+		if (!str)
 		{
-			while (++n < qnt)
-			{
-				str[n] = str_alloc(s, c, &i);
-				str[n] = str_maker(s, c, &i, str[n]);
-			}
-			str[n] = (char *)malloc(sizeof(char));
-			if (str[n])
-				str[n] = 0;
-			return (str);
+			ft_freearr((void **)str);
+			return (0);
 		}
+		str[n] = str_maker(s, c, &i, str[n]);
 	}
-	return (0);
+	str[n] = 0;
+	return (str);
 }

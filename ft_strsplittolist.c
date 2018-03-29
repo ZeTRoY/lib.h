@@ -6,7 +6,7 @@
 /*   By: aroi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 18:58:15 by aroi              #+#    #+#             */
-/*   Updated: 2018/03/28 19:09:51 by aroi             ###   ########.fr       */
+/*   Updated: 2018/03/29 16:47:56 by aroi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ t_list	*ft_strsplittolist(char const *s, char c)
 	strarr = ft_strsplit(s, c);
 	if (strarr == 0 || strarr[0] == 0)
 		return (0);
-	list = ft_lstnew(strarr[i], ft_strlen(strarr[i]));
-	if (list == 0)
+	if (!(list = ft_lstnew(strarr[i], ft_strlen(strarr[i]))))
 		return (0);
 	iter = list;
 	while (strarr[++i])
@@ -36,5 +35,6 @@ t_list	*ft_strsplittolist(char const *s, char c)
 			return (list);
 		iter = iter->next;
 	}
+	ft_freearr((void **)strarr);
 	return (list);
 }

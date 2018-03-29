@@ -6,7 +6,7 @@
 /*   By: aroi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 15:39:32 by aroi              #+#    #+#             */
-/*   Updated: 2018/03/28 19:49:05 by aroi             ###   ########.fr       */
+/*   Updated: 2018/03/29 17:28:09 by aroi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ char				*ft_strdup(const char *s1);
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strcat(char *s1, const char *s2);
-char				*ft_strncat(char *s1, const char *s2,
-		size_t n);
-size_t				ft_strlcat(char *dst, const char *src,
-		size_t size);
+char				*ft_strncat(char *s1, const char *s2, size_t n);
+size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *big, const char *little);
@@ -86,5 +84,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 size_t				ft_strlcpy(char *dst, char const *src, size_t size);
 t_list				*ft_strsplittolist(char const *s, char c);
 char				*ft_itoa_base(int n, int base);
+void				ft_freearr(void **arr);
+void				ft_lstaddend(t_list **alst, t_list *new);
 
 #endif

@@ -6,11 +6,20 @@
 /*   By: aroi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/21 19:50:41 by aroi              #+#    #+#             */
-/*   Updated: 2018/03/26 19:14:19 by aroi             ###   ########.fr       */
+/*   Updated: 2018/03/29 17:11:05 by aroi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#define LONG 922337203685477580
+
+static int	is_whitespace(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\n'
+		|| c == '\f' || c == '\v' || c == '\r')
+		return (1);
+	return (0);
+}
 
 int			ft_atoi(const char *str)
 {
@@ -21,18 +30,19 @@ int			ft_atoi(const char *str)
 	i = 0;
 	n = 0;
 	sign = 1;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
-			str[i] == '\f' || str[i] == '\r' || str[i] == '\v')
+	while (is_whitespace(str[i]))
 		i++;
 	if (str[i] == '-')
 		sign = -1;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
-	while (ft_isdigit((int)str[i]) == 1 && n >= 0)
+	while (ft_isdigit((int)str[i]))
+	{
+		if ((n > LONG || (n == LONG && str[i] - '0' > 7)) && sign == 1)
+			return (-1);
+		else if ((n > LONG || (n == LONG && str[i] - '0' > 8)) && sign == -1)
+			return (0);
 		n = n * 10 + (int)str[i++] - '0';
-	if (n < 0 && sign < 0)
-		return (0);
-	if (n < 0 && sign > 0)
-		return (-1);
+	}
 	return (sign * n);
 }
