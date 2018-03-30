@@ -6,7 +6,7 @@
 /*   By: aroi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/22 19:41:26 by aroi              #+#    #+#             */
-/*   Updated: 2018/03/27 16:03:35 by aroi             ###   ########.fr       */
+/*   Updated: 2018/03/29 21:05:14 by aroi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 			new_dst[len] = new_src[len];
 	else
 	{
-		while ((int)len-- > 0)
+		while (len-- > 0)
 			*new_dst++ = *new_src++;
 	}
 	return (dst);
