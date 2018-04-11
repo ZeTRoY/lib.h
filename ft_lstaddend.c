@@ -6,7 +6,7 @@
 /*   By: aroi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/29 17:19:42 by aroi              #+#    #+#             */
-/*   Updated: 2018/03/29 21:01:23 by aroi             ###   ########.fr       */
+/*   Updated: 2018/04/01 12:48:46 by aroi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	ft_lstaddend(t_list **alst, t_list *new)
 {
+	t_list *list;
+
 	if (alst == 0 || *alst == 0)
 		return ;
-	while ((*alst)->next)
-		*alst = (*alst)->next;
-	(*alst)->next = new;
+	list = *alst;
+	while (list->next)
+		list = list->next;
+	list->next = new;
 }

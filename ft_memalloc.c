@@ -6,7 +6,7 @@
 /*   By: aroi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 14:45:40 by aroi              #+#    #+#             */
-/*   Updated: 2018/03/27 20:42:57 by aroi             ###   ########.fr       */
+/*   Updated: 2018/04/01 11:52:18 by aroi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memalloc(size_t size)
 	memarea = (char *)malloc(size);
 	if (memarea && (int)size >= 0)
 	{
-		while (i < (int)size)
+		while ((size_t)i < size)
 			memarea[i++] = 0;
 		return ((void *)memarea);
 	}
