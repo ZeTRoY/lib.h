@@ -6,7 +6,7 @@
 /*   By: aroi <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 19:48:32 by aroi              #+#    #+#             */
-/*   Updated: 2018/03/29 21:28:18 by aroi             ###   ########.fr       */
+/*   Updated: 2018/05/19 14:10:44 by aroi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	str = malloc(sizeof(char) * (len_of_str(s1) + len_of_str(s2) + 1));
+	str = (char *)malloc(sizeof(char) * (len_of_str(s1) + len_of_str(s2) + 1));
 	if (!str)
 		return (0);
 	if (s1)
